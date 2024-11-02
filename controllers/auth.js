@@ -8,6 +8,10 @@ router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs');
 });
 
+router.get('/sign-up/client', (req, res) => {
+  res.render('auth/sign-up-client.ejs');
+});
+
 router.get('/sign-in', (req, res) => {
   res.render('auth/sign-in.ejs');
 });
@@ -19,6 +23,9 @@ router.get('/sign-out', (req, res) => {
 
 router.post('/sign-up', async (req, res) => {
   try {
+    //Add client bool
+    req.body.detailsType = 'Candidate';
+
     // Check if the username is already taken
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (userInDatabase) {
@@ -38,10 +45,41 @@ router.post('/sign-up', async (req, res) => {
     // All ready to create the new user!
     await User.create(req.body);
   
-    res.redirect('/auth/sign-in');
+    res.redirect('/details');
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect('/users/:userId/details/Candidate');
+  }
+});
+
+router.post('/sign-up/school', async (req, res) => {
+  try {
+    //Add client bool
+    req.body.detailsType = 'School';
+
+    // Check if the username is already taken
+    const userInDatabase = await User.findOne({ username: req.body.username });
+    if (userInDatabase) {
+      return res.send('Username already taken.');
+    }
+  
+    // Username is not taken already!
+    // Check if the password and confirm password match
+    if (req.body.password !== req.body.confirmPassword) {
+      return res.send('Password and Confirm Password must match');
+    }
+  
+    // Must hash the password before sending to the database
+    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+    req.body.password = hashedPassword;
+  
+    // All ready to create the new user!
+    await User.create(req.body);
+  
+    res.redirect('/details');
+  } catch (error) {
+    console.log(error);
+    res.redirect('/users/:userId/details/School');
   }
 });
 
@@ -67,7 +105,9 @@ router.post('/sign-in', async (req, res) => {
     // If there is other data you want to save to `req.session.user`, do so here!
     req.session.user = {
       username: userInDatabase.username,
-      _id: userInDatabase._id
+      _id: userInDatabase._id,
+      detailsType: userInDatabase.detailsType,
+      details: userInDatabase.details,
     };
   
     res.redirect('/');

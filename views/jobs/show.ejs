@@ -1,0 +1,39 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<h1>Job Details</h1>
+
+<h2><%= job.title %></h2>
+<p><strong>Posted on:</strong> <%= job.timePosted.getDate() %>/<%= job.timePosted.getMonth() + 1 %>/<%= job.timePosted.getFullYear() %></p>
+<p><strong>Listing Ends:</strong> <%= job.listingEnd.getDate() %>/<%= job.listingEnd.getMonth() + 1 %>/<%= job.listingEnd.getFullYear() %></p>
+<p><strong>Role:</strong> <%= job.roles %></p>
+<p><strong>Pay Per Day:</strong> $<%= job.pay %></p>
+<p><strong>Details:</strong> <%= job.details || 'No details provided.' %></p>
+<p><strong>School:</strong> <%= job.schoolId.details.name %></p>
+<p><strong>Location:</strong> <%= job.schoolId.details.location %></p>
+
+
+
+<% if (String(user._id) === String(job.schoolId) && user.detailsType === 'School') { %>
+    <h3>Candidate Details</h3>
+    <ul>
+        <% job.candidates.forEach((candidate) => { %>
+            <li>
+                <strong>Name:</strong> <%= candidate.firstName %> <%= candidate.secondName %><br>
+                <strong>Role:</strong> <%= candidate.roles %><br>
+                <strong>Pay Expectations:</strong> $<%= candidate.chargeRate %>
+            </li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<% if (user._id === job.schoolId && user.detailsType === 'School') { %>
+    <div>
+        <form action="/jobs/<%= job._id %>?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit">Delete Job</button>
+        </form>
+    </div>
+<% } %>
+
+
+<%- include('../partials/_footer.ejs') %>

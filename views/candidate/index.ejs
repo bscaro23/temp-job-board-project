@@ -1,0 +1,23 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+<%- include('../partials/_searchbar.ejs') %>
+    
+    <div class="main">
+        <% jobs.forEach((job)=>{ %>
+                <a href="/users/<%=user._id%>/School/job/<%= job._id %>">
+                    <div id="job-box">
+                        <h1><%= job.title %> </h1>
+                        <h2> $<%= job.pay %>/day </h2>
+                        <h4>Location: <%= job.schoolId.details.location %></h4>
+                        <h4>Apply By: <%= job.listingEnd.getDate() %>/<%= job.listingEnd.getMonth() + 1 %>/<%= job.listingEnd.getFullYear() %></h4>
+                        <div id="company-image"></div>
+                        <form action="/users/<%=user._id%>/School/job/<%= job._id %>/apply" method="POST">
+                            <button type="submit">APPLY</button>
+                        </form>
+                    </div>
+                </a>
+        <% }) %>
+    </div>
+    
+
+    <%- include('../partials/_footer.ejs') %>

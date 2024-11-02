@@ -1,0 +1,29 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+<%- include('../partials/_searchbar.ejs') %>
+    
+    
+
+    <div>
+        <a href="/users/<%=user._id%>/School/newJob">Add A New Job</a>
+    </div>
+    
+    
+    
+    <% userJobs.forEach((userJob)=>{ %>
+        <div>
+            <a href="/users/<%=user._id%>/School/job/<%= userJob._id %>">
+                <h3><%= userJob.title %> </h3>
+            </a>
+            <ul>
+                <% userJob.applicants.forEach((applicant)=> { %>
+                    <a href="/users/<%= user._id %>/candidates/<%= applicant._id %>">
+                        <li><%= applicant.firstName %> <%= applicant.secondName %></li>
+                    </a>
+                <% }) %>
+            </ul>
+        </div>
+    <% }) %>
+
+
+    <%- include('../partials/_footer.ejs') %>

@@ -1,0 +1,40 @@
+<div id="profile-area">
+    <div id="search-area">
+        <div id="banner-image">
+
+        </div>
+        <div class="search-container" id="job-search">
+            <form action="/search" method="GET">
+                <input type="text" placeholder="Search for jobs" name="query" class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </form>
+        </div>
+        <div id="filters">
+            <h1>Nearby Jobs</h1>
+        </div>
+    </div>
+    <div id="user-profile">
+        <div id="user-profile-top">
+            <div id="profile-image">
+                
+            </div>
+            <div id="name">
+                <% if (String(currentUser.detailsType) === 'Candidate') {%>
+                    <h1> <%= currentUser.details.firstName %> </h1>
+                    <h2> <%= currentUser.details.secondName %></h2>
+                    <% } else { %>
+                    <h1> <%= currentUser.details.name %></h1>
+                    <% } %>
+            </div>
+        </div>
+        <div id="user-profile-bottom">
+            <% if (String(currentUser.detailsType) === 'Candidate') {%>
+                <p>Fill your account with your skill  <br>
+                and squeeze the most out of your potential</p>
+                <% } else { %>
+                <p>Find the best candidates <br>
+                and squeeze the most out of your business' potential</p>
+                <% } %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<h1>Welcome we value you as a new client</h1>
+<h2>Please input your details below to complete registration:</h2>
+
+<form action="/users/<%= user._id %>/details/School" method="POST">
+    <label for="name">School Name:</label>
+    <input type="text" name="name" id="name">
+
+    <label for="location">Address of the school</label>
+    <input type="text" name="location" id="location">
+
+    <label for="about"></label>
+    <textarea name="about" id="about"></textarea>
+
+    <button type="submit">Add Details</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../partials/_footer.ejs') %>

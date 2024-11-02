@@ -1,0 +1,32 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<h1>Edit your profile</h1>
+<h2>Please edit the details below:</h2>
+
+<form action="/users/<%= user._id %>/details/School?_method=PUT" method="POST">
+    <label for="name">School Name:</label>
+    <input type="text" name="name" id="name" required value="<%= currentUser.details.name %>">
+
+    <label for="location">Address of the school</label>
+    <input type="text" name="location" id="location" required value="<%= currentUser.details.location %>" >
+
+    <label for="about"></label>
+    <textarea name="about" id="about"> <%= currentUser.details.about %> </textarea>
+
+    <button type="submit">Edit Details</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../partials/_footer.ejs') %>

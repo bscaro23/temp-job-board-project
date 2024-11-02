@@ -1,0 +1,33 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<form action="/users/<%= user._id %>/School" method="POST">
+    <label for="title">Job Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="listingEnd">Listing Length (days)</label>
+    <input type="number" id="listingEnd" name="listingEnd" min="1" max="7" required>
+
+
+    <label for="roles">Role</label>
+    <select id="roles" name="roles" required>
+        <option value="">Select a role</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Support Staff">Support Staff</option>
+        <option value="Administrator">Administrator</option>
+        <option value="Counselor">Counselor</option>
+        <option value="Maintenance">Maintenance</option>
+    </select>
+
+
+    <label for="pay">Pay Per Day</label>
+    <input type="number" id="pay" name="pay" required>
+
+    <label for="details"></label>
+    <textarea name="details" id="details"></textarea>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+<%- include('../partials/_footer.ejs') %>

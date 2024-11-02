@@ -1,0 +1,45 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<h1>Edit your profile</h1>
+<h2>Please edit the details below:</h2>
+
+<form action="/users/<%= user._id %>/details/Candidate?_method=PUT" method="POST">
+    <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" required value="<%= currentUser.details.firstName %>">
+
+        <label for="secondName">Second Name:</label>
+        <input type="text" name="secondName" id="secondName" required value="<%= currentUser.details.secondName %>">
+
+        <label for="roles">Role:</label>
+            <select name="roles" id="roles" required>
+                <option value="">Select a role</option>
+                <option value="Teacher" <%= currentUser.details.roles === 'Teacher' ? 'selected' : '' %>>Teacher</option>
+                <option value="Support Staff" <%= currentUser.details.roles === 'Support Staff' ? 'selected' : '' %>>Support Staff</option>
+                <option value="Administrator" <%= currentUser.details.roles === 'Administrator' ? 'selected' : '' %>>Administrator</option>
+                <option value="Counselor" <%= currentUser.details.roles === 'Counselor' ? 'selected' : '' %>>Counselor</option>
+                <option value="Maintenance" <%= currentUser.details.roles === 'Maintenance' ? 'selected' : '' %>>Maintenance</option>
+            </select>
+
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" required value="<%= currentUser.details.location %>">
+
+        <label for="chargeRate">Daily Charge Rate:</label>
+        <input type="number" name="chargeRate" id="chargeRate" required step="0.01" value="<%= currentUser.details.chargeRate %>">
+
+        <button type="submit">Add details</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../partials/_footer.ejs') %>

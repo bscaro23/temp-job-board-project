@@ -1,0 +1,45 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<h1>Welcome we value you as a new candidate</h1>
+<h2>Please input your details below to complete registration:</h2>
+
+<form action="/users/<%= user._id %>/details/Candidate" method="POST">
+    <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" required>
+
+        <label for="secondName">Second Name:</label>
+        <input type="text" name="secondName" id="secondName" required>
+
+        <label for="roles">Role:</label>
+        <select name="roles" id="roles" required>
+            <option value="">Select a role</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Support Staff">Support Staff</option>
+            <option value="Administrator">Administrator</option>
+            <option value="Counselor">Counselor</option>
+            <option value="Maintenance">Maintenance</option>
+        </select>
+
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" required>
+
+        <label for="chargeRate">Daily Charge Rate:</label>
+        <input type="number" name="chargeRate" id="chargeRate" required step="0.01">
+
+        <button type="submit">Add details</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../partials/_footer.ejs') %>

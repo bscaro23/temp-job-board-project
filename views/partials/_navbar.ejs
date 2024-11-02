@@ -1,0 +1,22 @@
+<nav>
+    <div id="banner">
+
+    </div>
+    <div id="rest">
+        <div id="logo">
+
+        </div>
+        <div id="navigation">
+            <a href="/auth/sign-out"><div id="dropdown"></div></a>
+            <div class="search-container">
+                <form action="/search" method="GET">
+                    <input type="text" placeholder="Search..." name="query" class="search-input">
+                    <i class="fas fa-search search-icon"></i>
+                </form>
+            </div>
+            <div id="queries"></div>
+            <div id="alerts"></div>
+            <a href="/users/<%= user._id %>/<%= user.detailsType %>/<%= user._id %>"><div id="account"></div></a>
+        </div>
+    </div>
+</nav>

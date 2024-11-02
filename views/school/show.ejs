@@ -1,0 +1,22 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="container">
+    <h1>School Details</h1>
+
+    <div class="school-details">
+        <p><strong>Name:</strong> <%= school.details.name %></p>
+        <p><strong>Location:</strong> <%= school.details.location %></p>
+        <p><strong>About:</strong> <%= school.details.about %></p>
+    </div>
+
+    <div class="button-container">
+        <a href="/users/<%= user._id %>/details/<%= school.detailsType %>/edit"  class="btn btn-primary">Edit School</a>
+        <form action="/schools/<%= school._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Delete School</button>
+        </form>
+        <a href="/schools" class="btn btn-secondary">Back to Schools List</a>
+    </div>
+</div>
+
+<%- include('../partials/_footer.ejs') %>

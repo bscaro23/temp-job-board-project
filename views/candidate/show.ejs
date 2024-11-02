@@ -1,0 +1,43 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="container">
+    <h1>Candidate Details</h1>
+
+    <div class="candidate-details">
+        <p><strong>First Name:</strong> <%= candidate.details.firstName %></p>
+        <p><strong>Second Name:</strong> <%= candidate.details.secondName %></p>
+        <p><strong>Role:</strong> <%= candidate.details.roles %></p>
+        <p><strong>Location:</strong> <%= candidate.details.location %></p>
+        <p><strong>Charge Rate:</strong> $<%= candidate.details.chargeRate %> per hour</p>
+
+        <% if (candidate.details.jobAppliedFor) { %>
+            <h3>Applied Job:</h3>
+            <p><strong>Job Title:</strong> <%= candidate.details.jobAppliedFor.title %></p>
+            <p><strong>Job Pay:</strong> $<%= candidate.details.jobAppliedFor.pay %> per day</p>
+        <% } %>
+
+        <h3>Ratings:</h3>
+        <ul>
+            <% candidate.details.rating.forEach(rating => { %>
+                <li>
+                    <strong>Rating:</strong> <%= rating.rating %>
+                    <% if (rating.jobId) { %>
+                        (<%= rating.jobId.title %>)
+                    <% } %>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <div class="button-container">
+        <% if (candidate._id.toString() === user._id.toString()) { %>
+            <a href="/users/<%= user._id %>/details/<%= candidate.detailsType %>/edit" class="btn btn-primary">Edit Candidate</a>
+            <form action="/users/<%= user._id %>/details?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Delete Candidate</button>
+            </form>
+        <% } %>
+    </div>
+</div>
+
+<%- include('../partials/_footer.ejs') %>
