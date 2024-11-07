@@ -10,12 +10,16 @@
     <input type="password" name="password" id="password" required />
     <button type="submit">Sign in</button>
   </form>
-  <form action="/auth/sign-up" method="GET">
-    <button type="submit">Create an Account - Candidate</button>
-  </form>
-  <form action="/auth/sign-up/client" method="GET">
-    <button type="submit">Create an Account - client</button>
-  </form>
+  
     </div>
+    <div id="sign-up">
+      <form action="/auth/sign-up" method="GET">
+        <button type="submit">Candidate Sign Up</button>
+      </form>
+      <form action="/auth/sign-up/client" method="GET">
+        <button type="submit">Need Candidates?</button>
+      </form>
+    </div>
+
   </div>
   <%- include('../partials/_footer.ejs') %>
