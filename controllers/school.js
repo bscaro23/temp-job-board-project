@@ -7,9 +7,11 @@ const Candidate = require('../models/candidate.js');
 const School = require('../models/school.js');
 const Job = require('../models/job.js');
 
+const journeyTabs = ['New Jobs', 'Applications', 'Offers', 'Accepted', 'Completed'] 
 
 router.get('/', async (req, res) => {
-    console.log(req.session.user._id)
+
+    const currentPage = 0;
     const currentUser = await User.findById(req.session.user._id).populate('details');
     const userJobs = await Job.find({schoolId: req.session.user._id}).populate({
         path: 'applicants',
@@ -20,7 +22,9 @@ router.get('/', async (req, res) => {
     console.log(userJobs);
     res.render('school/index.ejs', {
         userJobs: userJobs,
-        currentUser: currentUser
+        currentUser: currentUser,
+        journeyTabs,
+        currentPage
     });
 });
 

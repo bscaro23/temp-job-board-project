@@ -11,6 +11,13 @@
         </div>
         <div id="filters">
             <h1>Nearby Jobs</h1>
+            <div class="sort-options">
+                <% journeyTabs.forEach((tab, idx) => { %>
+                    <a href="/users/<%= user._id %>/<%= user.detailsType %>/<%= tab.toLowerCase().replace(/ /g, ''); %>" class="link-bottom-border" <% if(idx === currentPage){ %>
+                        id="link-bottom-clicked"
+                    <% } %>> <%= tab %> </a>
+                <% }); %>
+            </div>
         </div>
     </div>
     <div id="user-profile">

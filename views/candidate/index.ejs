@@ -3,7 +3,7 @@
 <%- include('../partials/_searchbar.ejs') %>
     
     <div class="main">
-        <% jobs.forEach((job)=>{ %>
+        <% currentJobs.forEach((job)=>{ %>
                 <a href="/users/<%=user._id%>/School/job/<%= job._id %>">
                     <div class="job-box">
                         <div class="job-box-header">
@@ -15,9 +15,16 @@
                             <h4>Location: <%= job.schoolId.details.location %></h4>
                             <h4>Apply By: <%= job.listingEnd.getDate() %>/<%= job.listingEnd.getMonth() + 1 %>/<%= job.listingEnd.getFullYear() %></h4>
                         </div>
-                        <form action="/users/<%=user._id%>/School/job/<%= job._id %>/apply" method="POST">
-                            <button type="submit">APPLY</button>
-                        </form>
+                        <% if(currentUser.details.jobsAppliedFor.some(jobId => jobId.toString() === job._id.toString())) { %>
+                            <form action="none">
+                                <button type="submit" id="applied">APPLIED</button>
+                            </form>
+
+                            <% } else { %>
+                                <form action="/users/<%=user._id%>/School/job/<%= job._id %>/apply" method="POST">
+                                    <button type="submit">APPLY</button>
+                                </form>
+                                <% } %>
                     </div>
                 </a>
         <% }) %>
