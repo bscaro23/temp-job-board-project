@@ -1,17 +1,27 @@
 <%- include('../partials/_header.ejs') %>
-  <h1>Create a new client account!</h1>
-  <form action="/auth/sign-up/school" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-    <label for="confirmPassword">Confirm Password:</label>
-    <input 
-      type="password"
-      name="confirmPassword"
-      id="confirmPassword"
-      required 
-    />
-    <button type="submit">Sign up</button>
-  </form>
-  <%- include('../partials/_footer.ejs') %>
+
+<div id="landing-page">
+  <div id="sign-up-box">
+    <h1>Customer Signup</h1>
+    <form action="/auth/sign-up" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required />
+      
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+      
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" required />
+      
+      <button type="submit">Sign up</button>
+    </form>
+  </div>
+
+  <div id="sign-in">
+    <form action="/auth/sign-in" method="GET">
+      <button type="submit">Back To Sign In</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/_footer.ejs') %>

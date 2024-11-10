@@ -403,3 +403,254 @@ button[type="submit"] {
 }
 
 
+/* Candidate Details Styling */
+.candidate-details-container {
+  max-width: 70vw;
+  margin: 2rem auto;
+  background-color: #cccbb8;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 
+      2px 2px 0px 0px #000,   
+      4px 4px 0px 0px #000,   
+      6px 6px 0px 0px #000; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.candidate-details-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+      7px 7px 0px 0px #000,   
+      9px 9px 0px 0px #000,   
+      11px 11px 0px 0px #000;
+}
+
+.candidate-details-container h1 {
+  font-size: 2.5rem;
+  color: #2e5e4c;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.candidate-details {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.candidate-details p {
+  margin-bottom: 1rem;
+}
+
+.candidate-details h3 {
+  font-size: 1.8rem;
+  color: #e9631a;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.candidate-details ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.candidate-details ul li {
+  margin-bottom: 0.5rem;
+  color: #2e5e4c;
+}
+
+.candidate-details .button-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.candidate-details button {
+  padding: 0.8rem 1.5rem;
+  background-color: #e9631a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 
+      2px 2px 0px 0px #000,   
+      4px 4px 0px 0px #000,   
+      6px 6px 0px 0px #000;
+}
+
+.candidate-details button:hover {
+  background-color: #cf5716;
+  transform: translateY(-1px);
+}
+
+.candidate-details .btn-primary {
+  background-color: #2e5e4c;
+}
+
+.candidate-details .btn-primary:hover {
+  background-color: #245442;
+}
+
+.candidate-details .btn-danger {
+  background-color: #d9534f;
+}
+
+.candidate-details .btn-danger:hover {
+  background-color: #c12e2a;
+}
+
+/* Edit Profile Page Styling */
+.edit-profile-container {
+  max-width: 60vw;
+  margin: 3rem auto;
+  background-color: #cccbb8;
+  border-radius: 10px;
+  padding: 2.5rem;
+  box-shadow: 
+      2px 2px 0px 0px #000,   
+      4px 4px 0px 0px #000,   
+      6px 6px 0px 0px #000; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-profile-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+      7px 7px 0px 0px #000,   
+      9px 9px 0px 0px #000,   
+      11px 11px 0px 0px #000;
+}
+
+.edit-profile-container h1, 
+.edit-profile-container h2 {
+  text-align: center;
+  color: #2e5e4c;
+  margin-bottom: 2rem;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edit-profile-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-form .form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2e5e4c;
+}
+
+.edit-profile-form .form-group input,
+.edit-profile-form .form-group select {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.edit-profile-form .form-group input:focus,
+.edit-profile-form .form-group select:focus {
+  border-color: #666;
+}
+
+.edit-profile-container .button-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.edit-profile-container .btn {
+  padding: 0.8rem 1.5rem;
+  background-color: #e9631a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 
+      2px 2px 0px 0px #000,   
+      4px 4px 0px 0px #000,   
+      6px 6px 0px 0px #000;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.edit-profile-container .btn:hover {
+  background-color: #cf5716;
+  transform: translateY(-2px);
+}
+
+
+
+/* Sign-Up Box Styling */
+#sign-up-box {
+  margin-right: 5vw;
+  margin-bottom: 5vh;
+  height: auto;
+  width: 25vw;
+  background-color: #cccbb8;
+  border-radius: 10px;
+  padding: 2%;
+  box-sizing: border-box;
+  display: flex;
+  align-content: left;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 
+    4px 4px 0px 0px #000,   
+    8px 8px 0px 0px #000,   
+    12px 12px 0px 0px #000; 
+  transition: transform 0.3s ease;
+}
+
+#sign-up-box h1 {
+  font-size: 3em;
+  color: #2e5e4c;
+  margin-top: 0%;
+  font-weight: 600;
+}
+
+#sign-up-box label {
+  font-size: 1em;
+  color: #2e5e4c;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+}
+
+#sign-up-box input[type="text"],
+#sign-up-box input[type="password"] {
+  width: 90%;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+#sign-up-box input[type="text"]:focus,
+#sign-up-box input[type="password"]:focus {
+  border-color: #666;
+  outline: none;
+}
+
+#sign-in {
+  margin-right: 5vw;
+  margin-bottom: 10vh;
+  height: 10vh;
+  width: 25vw;
+}

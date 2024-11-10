@@ -17,9 +17,6 @@ router.get('/', async(req, res) => {
         const currentUser = await User.findById(req.session.user._id).populate('details');
         const jobIds = currentUser.details.jobsAppliedFor;
 
-        
-
-        // Fetch all jobs for the given job IDs at once
         const currentNewJobs = await Job.find({ 
             _id: { $nin: jobIds }, 
             listingEnd: { $gt: currentDate } 
@@ -47,7 +44,6 @@ router.get('/applications', async(req, res) => {
         const currentUser = await User.findById(req.session.user._id).populate('details');
         const jobIds = currentUser.details.jobsAppliedFor;
 
-        // Fetch all jobs for the given job IDs at once
         const currentApplications = await Job.find({ 
             _id: { $in: jobIds }, 
             listingEnd: { $gt: currentDate } 
@@ -70,6 +66,96 @@ router.get('/applications', async(req, res) => {
 
 
 });
+
+router.get('/offers', async(req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id).populate('details');
+        const jobIds = currentUser.details.jobsOffered;
+
+        
+        const currentOffers = await Job.find({ 
+            _id: { $in: jobIds }, 
+            listingEnd: { $gt: currentDate } 
+        }).populate({
+            path: 'schoolId',
+            populate: { path: 'details' } 
+        });
+
+        const currentPage = 2;
+        res.render('candidate/index.ejs', {
+            currentUser,
+            currentPage,
+            journeyTabs,
+            currentJobs: currentOffers
+        });
+    } catch (error) {
+        console.error("Error fetching applications:", error);
+        res.status(500).send("Internal Server Error");
+    }
+
+
+});
+
+router.get('/accepted', async(req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id).populate('details');
+        const jobIds = currentUser.details.jobsAccepted;
+
+        
+        const currentAccepted = await Job.find({ 
+            _id: { $in: jobIds }, 
+            listingEnd: { $gt: currentDate } 
+        }).populate({
+            path: 'schoolId',
+            populate: { path: 'details' } 
+        });
+
+        const currentPage = 3;
+        res.render('candidate/index.ejs', {
+            currentUser,
+            currentPage,
+            journeyTabs,
+            currentJobs: currentAccepted
+        });
+    } catch (error) {
+        console.error("Error fetching applications:", error);
+        res.status(500).send("Internal Server Error");
+    }
+
+
+});
+
+router.get('/completed', async(req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id).populate('details');
+        const jobIds = currentUser.details.rating.jobId;
+
+        
+        const currentCompleted = await Job.find({ 
+            _id: { $in: jobIds }, 
+        }).populate({
+            path: 'schoolId',
+            populate: { path: 'details' } 
+        });
+
+        const currentPage = 4;
+        res.render('candidate/index.ejs', {
+            currentUser,
+            currentPage,
+            journeyTabs,
+            currentJobs: currentCompleted
+        });
+    } catch (error) {
+        console.error("Error fetching applications:", error);
+        res.status(500).send("Internal Server Error");
+    }
+
+
+});
+
+router.get('/newjobs', (req, res) => {
+    res.redirect('/')
+})
 
 router.get('/:id', async (req, res) => {
     try {

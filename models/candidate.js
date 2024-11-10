@@ -16,7 +16,9 @@ const candidateSchema = mongoose.Schema({
     location: { type: String, required: true },
     chargeRate: { type: Number, required: true },
     rating: [ratingSchema],
-    jobsAppliedFor: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Job', }]
+    jobsAppliedFor: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Job', }],
+    jobsOffered: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Job', }],
+    jobsAccepted: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Job', }]
 });
 
 const Candidate = mongoose.model('Candidate', candidateSchema);

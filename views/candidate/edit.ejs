@@ -1,17 +1,23 @@
 <%- include('../partials/_header.ejs') %>
 <%- include('../partials/_navbar.ejs') %>
 
-<h1>Edit your profile</h1>
-<h2>Please edit the details below:</h2>
+<div class="edit-profile-container">
+    <h1>Edit Your Profile</h1>
+    <h2>Please edit the details below:</h2>
 
-<form action="/users/<%= user._id %>/details/Candidate?_method=PUT" method="POST">
-    <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName" required value="<%= currentUser.details.firstName %>">
+    <form class="edit-profile-form" action="/users/<%= user._id %>/details/Candidate?_method=PUT" method="POST">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" id="firstName" required value="<%= currentUser.details.firstName %>">
+        </div>
 
-        <label for="secondName">Second Name:</label>
-        <input type="text" name="secondName" id="secondName" required value="<%= currentUser.details.secondName %>">
+        <div class="form-group">
+            <label for="secondName">Second Name:</label>
+            <input type="text" name="secondName" id="secondName" required value="<%= currentUser.details.secondName %>">
+        </div>
 
-        <label for="roles">Role:</label>
+        <div class="form-group">
+            <label for="roles">Role:</label>
             <select name="roles" id="roles" required>
                 <option value="">Select a role</option>
                 <option value="Teacher" <%= currentUser.details.roles === 'Teacher' ? 'selected' : '' %>>Teacher</option>
@@ -20,15 +26,23 @@
                 <option value="Counselor" <%= currentUser.details.roles === 'Counselor' ? 'selected' : '' %>>Counselor</option>
                 <option value="Maintenance" <%= currentUser.details.roles === 'Maintenance' ? 'selected' : '' %>>Maintenance</option>
             </select>
+        </div>
 
-        <label for="location">Location:</label>
-        <input type="text" name="location" id="location" required value="<%= currentUser.details.location %>">
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" name="location" id="location" required value="<%= currentUser.details.location %>">
+        </div>
 
-        <label for="chargeRate">Daily Charge Rate:</label>
-        <input type="number" name="chargeRate" id="chargeRate" required step="0.01" value="<%= currentUser.details.chargeRate %>">
+        <div class="form-group">
+            <label for="chargeRate">Daily Charge Rate:</label>
+            <input type="number" name="chargeRate" id="chargeRate" required step="0.01" value="<%= currentUser.details.chargeRate %>">
+        </div>
 
-        <button type="submit">Add details</button>
-</form>
+        <div class="button-container">
+            <button type="submit" class="btn btn-primary">Update Details</button>
+        </div>
+    </form>
+</div>
 
 
 

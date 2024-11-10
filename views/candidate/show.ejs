@@ -1,7 +1,7 @@
 <%- include('../partials/_header.ejs') %>
 <%- include('../partials/_navbar.ejs') %>
 
-<div class="container">
+<div class="candidate-details-container">
     <h1>Candidate Details</h1>
 
     <div class="candidate-details">
@@ -32,8 +32,10 @@
 
     <div class="button-container">
         <% if (candidate._id.toString() === user._id.toString()) { %>
-            <a href="/users/<%= user._id %>/details/<%= candidate.detailsType %>/edit" class="btn btn-primary">Edit Candidate</a>
-            <form action="/users/<%= user._id %>/details?_method=DELETE" method="POST" style="display:inline;">
+            <form action="/users/<%= user._id %>/details/<%= candidate.detailsType %>/edit" method="GET" ">
+                <button type="submit" class="btn btn-primary">Edit Candidate</button>
+            </form>
+            <form action="/users/<%= user._id %>/details?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger">Delete Candidate</button>
             </form>
         <% } %>
