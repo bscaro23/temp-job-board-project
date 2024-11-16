@@ -30,8 +30,8 @@ As it is for temporary work I devised that candidates would be rated following a
     * Following job completion they should be able to rate the candidate
 
 
-#### ***Game Link*** -
-#### ***Repo Clone Link*** -
+#### ***App Link*** - https://oj-board-86093e4c6c29.herokuapp.com
+
 
 ## Attributes
 
